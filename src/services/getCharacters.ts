@@ -1,38 +1,9 @@
 import api from './api';
-
-type CharacterResponse = {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
-  gender: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  location: {
-    name: string;
-    url: string;
-  };
-  image: string;
-  episode: string[];
-  url: string;
-};
-
-type GetCharactersResponse = {
-  info: {
-    count: number;
-    pages: number;
-    next?: string;
-    prev?: string;
-  };
-  results: CharacterResponse[];
-};
+import { ListCharactersResponse } from 'src/services/models';
 
 const getCharacters = async () => {
   try {
-    const result = await api.get<GetCharactersResponse>(
+    const result = await api.get<ListCharactersResponse>(
       'https://rickandmortyapi.com/api/character'
     );
 
