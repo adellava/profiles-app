@@ -3,7 +3,6 @@ import {
   CharacterResponse,
   LocationResponse,
   EpisodeResponse,
-  CompleteCharacter,
 } from 'src/services/models';
 
 const isAnURL = (aString: string) => {
