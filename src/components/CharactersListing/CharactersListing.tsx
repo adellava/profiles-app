@@ -1,19 +1,19 @@
 import { Character } from 'src/@types/Character';
-import { ProfileListingItem } from 'src/components/ProfileListingItem/ProfileListingItem';
+import { CharactersListingItem } from 'src/components/CharactersListingItem/CharactersListingItem';
 
-type ProfileListingProps = {
+type CharactersListingProps = {
   characters: Character[];
   onCharacterClick: (url: string) => void;
 };
 
-export const ProfileListing = ({
+export const CharactersListing = ({
   characters,
   onCharacterClick,
-}: ProfileListingProps) => {
+}: CharactersListingProps) => {
   return (
     <section>
       {characters.map((character) => (
-        <ProfileListingItem
+        <CharactersListingItem
           key={character.id}
           character={character}
           onCharacterClick={onCharacterClick}

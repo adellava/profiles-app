@@ -11,11 +11,9 @@ type CharactersListResponse = {
   results: Character[];
 };
 
-const getCharacters = async () => {
+const getCharacters = async (url: string) => {
   try {
-    const result = await api.get<CharactersListResponse>(
-      'https://rickandmortyapi.com/api/character'
-    );
+    const result = await api.get<CharactersListResponse>(url);
 
     return result;
   } catch {

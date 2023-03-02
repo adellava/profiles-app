@@ -1,14 +1,14 @@
 import { Character } from 'src/@types/Character';
 
-type ProfileListingItemProps = {
+type CharactersListingItemProps = {
   character: Character;
   onCharacterClick: (url: string) => void;
 };
 
-export const ProfileListingItem = ({
+export const CharactersListingItem = ({
   character,
   onCharacterClick,
-}: ProfileListingItemProps) => {
+}: CharactersListingItemProps) => {
   return (
     <article key={character.id}>
       <img src={character.image} alt={character.name} />
