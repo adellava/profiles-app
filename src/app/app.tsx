@@ -1,52 +1,72 @@
-import { useState } from 'react';
-import { CompleteCharacter } from 'src/@types/Character';
-import { CharactersListing, Button } from 'src/components';
+import { useRef } from 'react';
+import {
+  CharactersListing,
+  Button,
+  Modal,
+  CharacterCompleteProfile,
+} from 'src/components';
 import { MainLayout } from 'src/layouts';
-
-import useCharacters from 'src/hooks/useCharacters';
-import getACompleteCharacter from 'src/services/getACompleteCharacter';
-
 import styles from './app.module.scss';
+import useCharacters from 'src/hooks/useCharacters';
+import useCharacterCompleteProfile from 'src/hooks/useCharacterCompleteProfile';
 
 export function App() {
-  const [characters, isLoading, error, fetchCharacters, nextPage] =
-    useCharacters();
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const [
+    characters,
+    isLoadingCharacters,
+    errorInGettingTheCharacters,
+    fetchCharacters,
+    charactersNextPage,
+  ] = useCharacters();
+  const [
+    characterCompleteProfile,
+    fetchCharacter,
+    errorInGettingTheCompleteProfile,
+    loadingTheCompleteProgile,
+  ] = useCharacterCompleteProfile();
 
-  const [selectedCharacter, setSelectedCharacter] =
-    useState<CompleteCharacter | null>(null);
-  const getCompleteProfile = async (url: string) => {
-    const res = await getACompleteCharacter(url);
+  const showCompleteProfileModal = async (url: string) => {
+    if (!modalRef.current) return;
+    modalRef.current.showModal();
+    await fetchCharacter(url);
+  };
 
-    if (res instanceof Error) {
-      console.log(res.message);
-      return;
-    }
-
-    setSelectedCharacter(res);
+  const closeCompleteProfileModal = () => {
+    if (!modalRef.current) return;
+    modalRef.current.close();
   };
 
   return (
     <main className={styles.app}>
       <MainLayout>
-        <div>
-          {selectedCharacter ? (
-            <article>
-              <div>{selectedCharacter.character.name}</div>
-              <div>{selectedCharacter.location.name}</div>
-              <div>{selectedCharacter.origin.name}</div>
-              <div>numero di episodi: {selectedCharacter.episodes.length}</div>
-            </article>
+        <Modal
+          ref={modalRef}
+          title="Profile Detail"
+          onCloseModal={closeCompleteProfileModal}
+        >
+          {characterCompleteProfile && !errorInGettingTheCompleteProfile ? (
+            <CharacterCompleteProfile
+              completeCharacter={characterCompleteProfile}
+            />
           ) : null}
-        </div>
-        {isLoading ? <div>loading ...</div> : null}
+          {loadingTheCompleteProgile ? <div>loading ...</div> : null}
+          {errorInGettingTheCompleteProfile ? (
+            <div>{errorInGettingTheCompleteProfile.message}</div>
+          ) : null}
+        </Modal>
+
         <CharactersListing
           characters={characters}
-          onCharacterClick={getCompleteProfile}
+          onCharacterClick={showCompleteProfileModal}
         />
 
-        {error ? <div>{error.message}</div> : null}
+        {isLoadingCharacters ? <div>loading ...</div> : null}
+        {errorInGettingTheCharacters ? (
+          <div>{errorInGettingTheCharacters.message}</div>
+        ) : null}
 
-        {nextPage ? (
+        {charactersNextPage ? (
           <div style={{ margin: '2rem auto' }}>
             <Button onClick={fetchCharacters} text={'Next Page'} />
           </div>

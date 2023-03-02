@@ -1,13 +1,16 @@
 import { Episode } from './Episode';
-import { Location } from './Location';
+import { Place } from './Place';
+
+type Gender = 'Female' | 'Male' | 'Genderless' | 'unknown';
+type Status = 'Alive' | 'Dead' | 'unknown';
 
 export type Character = {
   id: number;
   name: string;
-  status: string;
+  status: Status;
   species: string;
   type: string;
-  gender: string;
+  gender: Gender;
   origin: {
     name: string;
     url: string;
@@ -23,7 +26,7 @@ export type Character = {
 
 export type CompleteCharacter = {
   character: Character;
-  origin: Location;
-  location: Location;
+  origin: Place;
+  location: Place;
   episodes: Episode[];
 };

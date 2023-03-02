@@ -1,8 +1,8 @@
 import api from 'src/services/api';
-import { Character, Location, Episode } from 'src/@types';
-import { isAnURL, isALocation } from 'src/utils';
+import { Character, Place, Episode } from 'src/@types';
+import { isAnURL, isAPlace } from 'src/utils';
 
-const returnAnEmptyLocation = (): Promise<Location> => {
+const returnAnEmptyLocation = (): Promise<Place> => {
   return new Promise((resolve) => {
     resolve({
       name: 'unknown',
@@ -20,17 +20,17 @@ const getACompleteCharacter = async (aCharacterURL: string) => {
   try {
     const aCharacter: Character = await api.get<Character>(aCharacterURL);
 
-    const locationPromises: Promise<Location>[] = [];
+    const locationPromises: Promise<Place>[] = [];
     const episodesPromises: Promise<Episode>[] = [];
 
     locationPromises.push(
-      isALocation(aCharacter.origin)
-        ? api.get<Location>(aCharacter.origin.url)
+      isAPlace(aCharacter.origin)
+        ? api.get<Place>(aCharacter.origin.url)
         : returnAnEmptyLocation()
     );
     locationPromises.push(
-      isALocation(aCharacter.location)
-        ? api.get<Location>(aCharacter.location.url)
+      isAPlace(aCharacter.location)
+        ? api.get<Place>(aCharacter.location.url)
         : returnAnEmptyLocation()
     );
 

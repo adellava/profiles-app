@@ -10,6 +10,7 @@
   background-color: style.$light-primary;
   border-radius: style.$border-radius;
   @include style.elevation(2);
+  cursor: pointer;
   &_action {
     display: inline;
     all: unset;

@@ -1,0 +1,70 @@
+@use 'src/styles' as style;
+$_minModalWidth: 320px;
+
+.Modal {
+  position: fixed;
+  display: block;
+  border: 1px solid style.$gray-100;
+  @include style.elevation(12);
+  border-radius: style.$border-radius;
+  top: 0px;
+  bottom: 0px;
+  max-width: calc(100vw - 4rem);
+  max-height: calc(100vh - 4rem);
+  user-select: text;
+  visibility: visible;
+  overflow: auto;
+  left: 0px;
+  right: 0px;
+  width: fit-content;
+  height: fit-content;
+  background-color: style.$white;
+  min-width: $_minModalWidth;
+  text-align: left;
+  margin: auto;
+  box-sizing: border-box;
+  background-color: style.$gray-100;
+  &_closeButton {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    top: -1.5rem;
+    right: -1.5rem;
+    padding: 0;
+    margin: 2rem;
+    cursor: pointer;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  &_closeButtonImage {
+    width: 100%;
+    height: 100%;
+    all: unset;
+    &:hover {
+      background-color: darken($color: style.$gray-100, $amount: 10%);
+    }
+    &:focus {
+      outline: 1px solid style.$white;
+      outline-offset: -4px;
+    }
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+  &_title {
+    margin-top: 0.2rem;
+    padding: 1rem 2rem;
+    color: style.$gray-700;
+    font-size: style.$font-size-400;
+    text-transform: uppercase;
+    font-weight: style.$text-featured-weight;
+  }
+  &_content {
+    padding: 1rem 2rem 2rem 2rem;
+  }
+  &:not([open]) {
+    display: none;
+  }
+}

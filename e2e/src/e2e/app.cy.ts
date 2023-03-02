@@ -13,7 +13,13 @@ describe('profiles-app', () => {
 
   it('should load more profiles when the button is clicked', () => {
     cy.get('article').should('have.length', 20);
-    cy.get('button').click();
+    cy.get('button:contains("Next Page")').click();
     cy.get('article').should('have.length', 40);
+  });
+
+  it('should display the Profile Details when a profile is clicked', () => {
+    cy.get('article').first().click();
+    cy.get('dialog').should('be.visible');
+    cy.get('dialog').find('img').should('be.visible');
   });
 });
