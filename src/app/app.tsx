@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Character, CharacterHistory } from 'src/@types/Character';
+import { ProfileListing } from 'src/components';
 import getCharacters from 'src/services/getCharacters';
 import getACompleteCharacter from 'src/services/getACompleteCharacter';
 
@@ -30,6 +31,8 @@ export function App() {
       return;
     }
 
+    console.log(res);
+
     setSelectedCharacter(res);
   };
 
@@ -50,16 +53,10 @@ export function App() {
           </article>
         )}
       </div>
-      <ul>
-        {characters.map((character) => (
-          <li key={character.id}>
-            {character.name}{' '}
-            <button onClick={() => getCompleteProfile(character.url)}>
-              get complete profile
-            </button>
-          </li>
-        ))}
-      </ul>
+      <ProfileListing
+        characters={characters}
+        onCharacterClick={getCompleteProfile}
+      />
     </div>
   );
 }
