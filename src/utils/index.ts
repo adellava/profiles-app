@@ -1,2 +1,2 @@
 export * from './isAnURL';
-export * from './isALocation';
+export * from './isAPlace';

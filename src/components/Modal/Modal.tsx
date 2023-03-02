@@ -20,7 +20,7 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(
           />
         </button>
         <h3 className={styles.Modal_title}>{title}</h3>
-        {children}
+        <div className={styles.Modal_content}>{children}</div>
       </dialog>
     );
   }

@@ -4,11 +4,13 @@ $_minModalWidth: 320px;
 .Modal {
   position: fixed;
   display: block;
-  border: 2px solid style.$gray-200;
+  border: 1px solid style.$gray-100;
+  @include style.elevation(12);
+  border-radius: style.$border-radius;
   top: 0px;
   bottom: 0px;
-  max-width: calc((100% - 6px) - 2rem);
-  max-height: calc((100% - 6px) - 2rem);
+  max-width: calc(100vw - 4rem);
+  max-height: calc(100vh - 4rem);
   user-select: text;
   visibility: visible;
   overflow: auto;
@@ -17,15 +19,17 @@ $_minModalWidth: 320px;
   width: fit-content;
   height: fit-content;
   background-color: style.$white;
-  padding: 2rem;
   min-width: $_minModalWidth;
+  text-align: left;
   margin: auto;
+  box-sizing: border-box;
+  background-color: style.$gray-100;
   &_closeButton {
     position: absolute;
     width: 3rem;
     height: 3rem;
-    top: 0;
-    right: 0;
+    top: -1.5rem;
+    right: -1.5rem;
     padding: 0;
     margin: 2rem;
     cursor: pointer;
@@ -37,13 +41,28 @@ $_minModalWidth: 320px;
   &_closeButtonImage {
     width: 100%;
     height: 100%;
-    background-color: style.$white;
+    all: unset;
+    &:hover {
+      background-color: darken($color: style.$gray-100, $amount: 10%);
+    }
+    &:focus {
+      outline: 1px solid style.$white;
+      outline-offset: -4px;
+    }
+    &:active {
+      transform: scale(0.99);
+    }
   }
   &_title {
     margin-top: 0.2rem;
-    color: style.$black;
-    font-size: style.$font-size-500;
-    font-weight: style.$text-standard-weight;
+    padding: 1rem 2rem;
+    color: style.$gray-700;
+    font-size: style.$font-size-400;
+    text-transform: uppercase;
+    font-weight: style.$text-featured-weight;
+  }
+  &_content {
+    padding: 1rem 2rem 2rem 2rem;
   }
   &:not([open]) {
     display: none;

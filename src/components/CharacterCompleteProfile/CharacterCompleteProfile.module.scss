@@ -1,0 +1,58 @@
+@use 'src/styles' as style;
+
+.CharacterCompleteProfile {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  grid-template-areas: 'img' 'description';
+  grid-template-rows: auto auto;
+
+  &_img {
+    grid-area: img;
+    aspect-ratio: 1/1;
+    border-radius: style.$border-radius;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &_description {
+    grid-area: description;
+    text-align: left;
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-column-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 'info info' 'origin location' 'episodes episodes';
+  }
+
+  &_box {
+    background-color: style.$bg-color;
+    border-radius: style.$border-radius;
+    padding: 1rem;
+  }
+
+  &_info {
+    grid-area: info;
+  }
+
+  &_origin {
+    grid-area: origin;
+  }
+
+  &_location {
+    grid-area: location;
+  }
+
+  &_episodes {
+    grid-area: episodes;
+  }
+}
+
+@include style.min-width(large) {
+  .CharacterCompleteProfile {
+    grid-template-areas: 'img description';
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+  }
+}
