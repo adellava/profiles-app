@@ -1,9 +1,5 @@
 import api from 'src/services/api';
-import {
-  CharacterResponse,
-  LocationResponse,
-  EpisodeResponse,
-} from 'src/services/models';
+import { Character, Location, Episode } from 'src/@types';
 
 const isAnURL = (aString: string) => {
   const urlRegex = new RegExp(
@@ -25,7 +21,7 @@ const isALocation = (aLocation: { name: string; url: string }) => {
   return true;
 };
 
-const returnAnEmptyLocation = (): Promise<LocationResponse> => {
+const returnAnEmptyLocation = (): Promise<Location> => {
   return new Promise((resolve) => {
     resolve({
       name: 'unknown',
@@ -41,27 +37,25 @@ const returnAnEmptyLocation = (): Promise<LocationResponse> => {
 
 const getACompleteCharacter = async (aCharacterURL: string) => {
   try {
-    const aCharacter: CharacterResponse = await api.get<CharacterResponse>(
-      aCharacterURL
-    );
+    const aCharacter: Character = await api.get<Character>(aCharacterURL);
 
-    const locationPromises: Promise<LocationResponse>[] = [];
-    const episodesPromises: Promise<EpisodeResponse>[] = [];
+    const locationPromises: Promise<Location>[] = [];
+    const episodesPromises: Promise<Episode>[] = [];
 
     locationPromises.push(
       isALocation(aCharacter.origin)
-        ? api.get<LocationResponse>(aCharacter.origin.url)
+        ? api.get<Location>(aCharacter.origin.url)
         : returnAnEmptyLocation()
     );
     locationPromises.push(
       isALocation(aCharacter.location)
-        ? api.get<LocationResponse>(aCharacter.location.url)
+        ? api.get<Location>(aCharacter.location.url)
         : returnAnEmptyLocation()
     );
 
     aCharacter.episode.forEach((episodeUrl) => {
       if (isAnURL(episodeUrl))
-        episodesPromises.push(api.get<EpisodeResponse>(episodeUrl));
+        episodesPromises.push(api.get<Episode>(episodeUrl));
     });
 
     const [origin, location] = await Promise.all(locationPromises);

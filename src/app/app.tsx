@@ -1,27 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Character, CharacterHistory } from 'src/@types/Character';
-import getCharacters from 'src/services/getCharacters';
+import { useState } from 'react';
+import { CompleteCharacter } from 'src/@types/Character';
+import { CharactersListing, Button } from 'src/components';
+import { MainLayout } from 'src/layouts';
+
+import useCharacters from 'src/hooks/useCharacters';
 import getACompleteCharacter from 'src/services/getACompleteCharacter';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
 
 export function App() {
-  const [characters, setCharacters] = useState<Character[]>([]);
+  const [characters, isLoading, error, fetchCharacters, nextPage] =
+    useCharacters();
+
   const [selectedCharacter, setSelectedCharacter] =
-    useState<CharacterHistory | null>(null);
-
-  const fetchCharacters = async () => {
-    const res = await getCharacters();
-
-    if (res instanceof Error) {
-      console.log(res.message);
-      return;
-    }
-
-    setCharacters(res.results);
-  };
-
+    useState<CompleteCharacter | null>(null);
   const getCompleteProfile = async (url: string) => {
     const res = await getACompleteCharacter(url);
 
@@ -33,34 +25,36 @@ export function App() {
     setSelectedCharacter(res);
   };
 
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
-
   return (
-    <div>
-      Profiles App
-      <div>
-        {selectedCharacter && (
-          <article>
-            <div>{selectedCharacter.character.name}</div>
-            <div>{selectedCharacter.location.name}</div>
-            <div>{selectedCharacter.origin.name}</div>
-            <div>numero di episodi: {selectedCharacter.episodes.length}</div>
-          </article>
+    <main className={styles.app}>
+      <MainLayout>
+        <div>
+          {selectedCharacter ? (
+            <article>
+              <div>{selectedCharacter.character.name}</div>
+              <div>{selectedCharacter.location.name}</div>
+              <div>{selectedCharacter.origin.name}</div>
+              <div>numero di episodi: {selectedCharacter.episodes.length}</div>
+            </article>
+          ) : null}
+        </div>
+        {isLoading ? <div>loading ...</div> : null}
+        <CharactersListing
+          characters={characters}
+          onCharacterClick={getCompleteProfile}
+        />
+
+        {error ? <div>{error.message}</div> : null}
+
+        {nextPage ? (
+          <div style={{ margin: '2rem auto' }}>
+            <Button onClick={fetchCharacters} text={'Next Page'} />
+          </div>
+        ) : (
+          <div>no more pages</div>
         )}
-      </div>
-      <ul>
-        {characters.map((character) => (
-          <li key={character.id}>
-            {character.name}{' '}
-            <button onClick={() => getCompleteProfile(character.url)}>
-              get complete profile
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      </MainLayout>
+    </main>
   );
 }
 

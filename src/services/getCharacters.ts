@@ -1,11 +1,19 @@
 import api from './api';
-import { ListCharactersResponse } from 'src/services/models';
+import { Character } from 'src/@types';
 
-const getCharacters = async () => {
+type CharactersListResponse = {
+  info: {
+    count: number;
+    pages: number;
+    next?: string;
+    prev?: string;
+  };
+  results: Character[];
+};
+
+const getCharacters = async (url: string) => {
   try {
-    const result = await api.get<ListCharactersResponse>(
-      'https://rickandmortyapi.com/api/character'
-    );
+    const result = await api.get<CharactersListResponse>(url);
 
     return result;
   } catch {

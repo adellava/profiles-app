@@ -1,0 +1,16 @@
+@use 'src/styles' as style;
+
+.Header {
+  background-color: style.$primary;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem;
+  @include style.elevation(2);
+  &_title {
+    color: style.$white;
+    font-size: style.$font-size-400;
+    font-weight: style.$text-featured-weight;
+  }
+}

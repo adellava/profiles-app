@@ -1,0 +1,37 @@
+$white: #f8f7f7 !default;
+$gray-100: #e6e6e6 !default;
+$gray-200: #cccccc !default;
+$gray-300: #b3b3b3 !default;
+$gray-400: #999999 !default;
+$gray-500: #767676 !default;
+$gray-600: #666666 !default;
+$gray-700: #4d4d4d !default;
+$gray-800: #333333 !default;
+$gray-900: #1a1a1a !default;
+$black: $gray-900 !default;
+
+$bg-color: $white;
+$text-color: $gray-800;
+$border-color: $gray-300;
+
+$primary: #3423a3 !default;
+$light-primary: #ebe9f8 !default;
+$highlight: #289a00 !default;
+
+$red: #da593a !default;
+$light-red: #f9edea !default;
+$yellow: #e39635 !default;
+$light-yellow: #fdf7eb !default;
+$green: #5eaf63 !default;
+$light-green: #edf7ef !default;
+$blue: #2569d1 !default;
+$light-blue: #e7eff9 !default;
+
+$success: $green !default;
+$light-success: $light-green !default;
+$danger: $red !default;
+$light-danger: $light-red !default;
+$warning: $yellow !default;
+$light-warning: $light-yellow !default;
+$info: $blue !default;
+$light-info: $light-blue !default;

@@ -1,0 +1,30 @@
+@use 'src/styles' as style;
+
+.Button {
+  all: unset;
+  background-color: style.$highlight;
+  color: style.$white;
+  font-size: style.$font-size-400;
+  border-radius: style.$border-radius;
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: darken($color: style.$highlight, $amount: 10%);
+  }
+  &:focus {
+    outline: 1px solid style.$white;
+    outline-offset: -4px;
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+}

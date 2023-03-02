@@ -1,29 +1,29 @@
-type Character = {
+import { Episode } from './Episode';
+import { Location } from './Location';
+
+export type Character = {
   id: number;
   name: string;
   status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: string[];
   url: string;
 };
 
-type Location = {
-  id: number;
-  name: string;
-  type: string;
-  dimension: string;
-};
-
-type Episode = {
-  id: number;
-  name: string;
-  air_date: string;
-  episode: string;
-};
-
-type CharacterHistory = {
+export type CompleteCharacter = {
   character: Character;
-  location: Location;
   origin: Location;
+  location: Location;
   episodes: Episode[];
 };
-
-export { Character, CharacterHistory };
