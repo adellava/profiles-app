@@ -1,0 +1,15 @@
+@use 'src/styles' as style;
+
+.CharactersListing {
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(30ch, 40ch));
+}
+
+@include style.min-width(large) {
+  .CharactersListing {
+    grid-template-columns: repeat(auto-fit, minmax(65ch, 80ch));
+  }
+}

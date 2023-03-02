@@ -1,5 +1,6 @@
 import { Character } from 'src/@types/Character';
 import { CharactersListingItem } from 'src/components/CharactersListingItem/CharactersListingItem';
+import styles from './CharactersListing.module.scss';
 
 type CharactersListingProps = {
   characters: Character[];
@@ -11,7 +12,7 @@ export const CharactersListing = ({
   onCharacterClick,
 }: CharactersListingProps) => {
   return (
-    <section>
+    <section className={styles.CharactersListing}>
       {characters.map((character) => (
         <CharactersListingItem
           key={character.id}

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { CompleteCharacter } from 'src/@types/Character';
-import { CharactersListing, Header } from 'src/components';
+import { CharactersListing, Button } from 'src/components';
+import { MainLayout } from 'src/layouts';
 
 import useCharacters from 'src/hooks/useCharacters';
 import getACompleteCharacter from 'src/services/getACompleteCharacter';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
 
 export function App() {
@@ -22,38 +22,39 @@ export function App() {
       return;
     }
 
-    console.log(res);
-
     setSelectedCharacter(res);
   };
 
   return (
-    <div>
-      <Header />
-      <div>
-        {selectedCharacter ? (
-          <article>
-            <div>{selectedCharacter.character.name}</div>
-            <div>{selectedCharacter.location.name}</div>
-            <div>{selectedCharacter.origin.name}</div>
-            <div>numero di episodi: {selectedCharacter.episodes.length}</div>
-          </article>
-        ) : null}
-      </div>
-      {isLoading ? <div>loading ...</div> : null}
-      <CharactersListing
-        characters={characters}
-        onCharacterClick={getCompleteProfile}
-      />
+    <main className={styles.app}>
+      <MainLayout>
+        <div>
+          {selectedCharacter ? (
+            <article>
+              <div>{selectedCharacter.character.name}</div>
+              <div>{selectedCharacter.location.name}</div>
+              <div>{selectedCharacter.origin.name}</div>
+              <div>numero di episodi: {selectedCharacter.episodes.length}</div>
+            </article>
+          ) : null}
+        </div>
+        {isLoading ? <div>loading ...</div> : null}
+        <CharactersListing
+          characters={characters}
+          onCharacterClick={getCompleteProfile}
+        />
 
-      {error ? <div>{error.message}</div> : null}
+        {error ? <div>{error.message}</div> : null}
 
-      {nextPage ? (
-        <button onClick={fetchCharacters}>next page</button>
-      ) : (
-        <div>no more pages</div>
-      )}
-    </div>
+        {nextPage ? (
+          <div style={{ margin: '2rem auto' }}>
+            <Button onClick={fetchCharacters} text={'Next Page'} />
+          </div>
+        ) : (
+          <div>no more pages</div>
+        )}
+      </MainLayout>
+    </main>
   );
 }
 
