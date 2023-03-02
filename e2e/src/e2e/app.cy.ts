@@ -20,5 +20,6 @@ describe('profiles-app', () => {
   it('should display the Profile Details when a profile is clicked', () => {
     cy.get('article').first().click();
     cy.get('dialog').should('be.visible');
+    cy.get('dialog').find('img').should('be.visible');
   });
 });
