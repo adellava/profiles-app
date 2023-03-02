@@ -15,12 +15,12 @@ const CharacterCompleteProfilePlace = ({
 }) => {
   return (
     <>
-      <h4>{title}</h4>
-      <div>{place.name}</div>
+      <h4 className={styles.CharacterCompleteProfile_sectionTitle}>{title}</h4>
+      <div>Name: {place.name}</div>
       {isAPlace(place) ? (
         <>
-          <div>{place.type}</div>
-          <div>{place.dimension}</div>
+          <div>Type: {place.type}</div>
+          <div>Dimension: {place.dimension}</div>
           <div>N residents: {place.residents.length}</div>
         </>
       ) : null}
@@ -44,8 +44,10 @@ export const CharacterCompleteProfile = ({
         <div
           className={`${styles.CharacterCompleteProfile_info} ${styles.CharacterCompleteProfile_box}`}
         >
-          <h3>{completeCharacter.character.name}</h3>
-          <div>
+          <h3 className={styles.CharacterCompleteProfile_title}>
+            {completeCharacter.character.name}
+          </h3>
+          <div className={styles.CharacterCompleteProfile_subtitle}>
             <span>{completeCharacter.character.species}</span> -{' '}
             <span>{completeCharacter.character.status}</span> -{' '}
             <span>{completeCharacter.character.gender}</span>
@@ -70,7 +72,9 @@ export const CharacterCompleteProfile = ({
         <div
           className={`${styles.CharacterCompleteProfile_episodes} ${styles.CharacterCompleteProfile_box}`}
         >
-          <h4>Episodes</h4>
+          <h4 className={styles.CharacterCompleteProfile_sectionTitle}>
+            Episodes
+          </h4>
           {completeCharacter.episodes.map((episode, i) => (
             <span key={episode.id}>
               {i !== 0 ? ', ' : null}
