@@ -1,0 +1,69 @@
+// Vitest Snapshot v1
+
+exports[`CharactersListingItem > should render a character 1`] = `
+<article
+  className="_CharactersListingItem_73de65"
+  onClick={[Function]}
+>
+  <img
+    alt="Rick Sanchez"
+    className="_CharactersListingItem_img_73de65"
+    src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+  />
+  <div
+    className="_CharactersListingItem_description_73de65"
+  >
+    <section>
+      <div>
+        <h3
+          className="_CharactersListingItem_title_73de65"
+        >
+          Rick Sanchez
+        </h3>
+      </div>
+      <div
+        className="_CharactersListingItem_subtitle1_73de65"
+      >
+        Human
+         - 
+        Alive
+      </div>
+      <div
+        className="_CharactersListingItem_subtitle2_73de65"
+      >
+        Male
+      </div>
+    </section>
+    <section>
+      <div
+        className="_CharactersListingItem_meta_73de65"
+      >
+        Location
+      </div>
+      <div>
+        Earth (Replacement Dimension)
+      </div>
+    </section>
+    <section>
+      <div
+        className="_CharactersListingItem_meta_73de65"
+      >
+        Origin
+      </div>
+      <div>
+        Earth (C-137)
+      </div>
+    </section>
+    <section>
+      <div
+        className="_CharactersListingItem_meta_73de65"
+      >
+        Number of Episodes
+      </div>
+      <div>
+        0
+      </div>
+    </section>
+  </div>
+</article>
+`;
