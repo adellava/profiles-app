@@ -48,7 +48,7 @@ export const CharactersListingItem = ({
 
         <section>
           <div className={styles.CharactersListingItem_meta}>
-            Number of episodes
+            Number of Episodes
           </div>
           <div>{character.episode.length}</div>
         </section>
