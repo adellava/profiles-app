@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx test && nx build",
-    "test": "nx test"
+    "build": "nx test && nx e2e && nx build",
+    "test": "nx test",
+    "graph": "nx dep-graph",
+    "e2e": "nx run e2e:e2e"
   },
   "private": true,
   "dependencies": {
