@@ -11,7 +11,7 @@ export const ProfileListing = ({
   onCharacterClick,
 }: ProfileListingProps) => {
   return (
-    <ul>
+    <section>
       {characters.map((character) => (
         <ProfileListingItem
           key={character.id}
@@ -19,6 +19,6 @@ export const ProfileListing = ({
           onCharacterClick={onCharacterClick}
         />
       ))}
-    </ul>
+    </section>
   );
 };

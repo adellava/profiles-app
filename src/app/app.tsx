@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Character, CharacterHistory } from 'src/@types/Character';
-import { ProfileListing } from 'src/components';
+import { Character, CompleteCharacter } from 'src/@types/Character';
+import { ProfileListing, Header } from 'src/components';
 import getCharacters from 'src/services/getCharacters';
 import getACompleteCharacter from 'src/services/getACompleteCharacter';
 
@@ -10,7 +10,7 @@ import styles from './app.module.scss';
 export function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [selectedCharacter, setSelectedCharacter] =
-    useState<CharacterHistory | null>(null);
+    useState<CompleteCharacter | null>(null);
 
   const fetchCharacters = async () => {
     const res = await getCharacters();
@@ -42,7 +42,7 @@ export function App() {
 
   return (
     <div>
-      Profiles App
+      <Header />
       <div>
         {selectedCharacter && (
           <article>
