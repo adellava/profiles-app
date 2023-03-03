@@ -1,0 +1,108 @@
+// Vitest Snapshot v1
+
+exports[`CharacterCompleteProfile > should render a complete profile 1`] = `
+<div
+  className="_CharacterCompleteProfile_bd1c2c"
+>
+  <img
+    alt="Ants in my Eyes Johnson"
+    className="_CharacterCompleteProfile_img_bd1c2c"
+    src="https://rickandmortyapi.com/api/character/avatar/20.jpeg"
+  />
+  <div
+    className="_CharacterCompleteProfile_description_bd1c2c"
+  >
+    <div
+      className="_CharacterCompleteProfile_info_bd1c2c _CharacterCompleteProfile_box_bd1c2c"
+    >
+      <h3
+        className="_CharacterCompleteProfile_title_bd1c2c"
+      >
+        Ants in my Eyes Johnson
+      </h3>
+      <div
+        className="_CharacterCompleteProfile_subtitle_bd1c2c"
+      >
+        <span>
+          Human
+        </span>
+         -
+         
+        <span>
+          <span
+            aria-label="Unknown"
+            className="_StatusImage_5db57b"
+            role="img"
+          >
+            ?
+          </span>
+          unknown
+        </span>
+         
+        -
+         
+        <span>
+          <span
+            aria-label="Male"
+            className="_GenderImage_d4cd8b"
+            role="img"
+          >
+            ♂
+          </span>
+          Male
+        </span>
+      </div>
+    </div>
+    <div
+      className="_CharacterCompleteProfile_origin_bd1c2c _CharacterCompleteProfile_box_bd1c2c"
+    >
+      <h4
+        className="_CharacterCompleteProfile_sectionTitle_bd1c2c"
+      >
+        Origin
+      </h4>
+      <div>
+        Name: 
+        unknown
+      </div>
+    </div>
+    <div
+      className="_CharacterCompleteProfile_location_bd1c2c _CharacterCompleteProfile_box_bd1c2c"
+    >
+      <h4
+        className="_CharacterCompleteProfile_sectionTitle_bd1c2c"
+      >
+        Location
+      </h4>
+      <div>
+        Name: 
+        Interdimensional Cable
+      </div>
+      <div>
+        Type: 
+        TV
+      </div>
+      <div>
+        Dimension: 
+        unknown
+      </div>
+      <div>
+        N residents: 
+        62
+      </div>
+    </div>
+    <div
+      className="_CharacterCompleteProfile_episodes_bd1c2c _CharacterCompleteProfile_box_bd1c2c"
+    >
+      <h4
+        className="_CharacterCompleteProfile_sectionTitle_bd1c2c"
+      >
+        Episodes
+      </h4>
+      <span>
+        Rixty Minutes
+      </span>
+    </div>
+  </div>
+</div>
+`;
