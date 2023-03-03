@@ -1,6 +1,7 @@
 # Setup
 
 ```zsh
+nvm use
 npm install
 ```
 
