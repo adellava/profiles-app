@@ -11,7 +11,7 @@ type CharactersListResponse = {
   results: Character[];
 };
 
-const getCharacters = async (url: string) => {
+export const getCharacters = async (url: string) => {
   try {
     const result = await api.get<CharactersListResponse>(url);
 

@@ -7,8 +7,7 @@ import {
 } from 'src/components';
 import { MainLayout } from 'src/layouts';
 import styles from './app.module.scss';
-import useCharacters from 'src/hooks/useCharacters';
-import useCharacterCompleteProfile from 'src/hooks/useCharacterCompleteProfile';
+import { useCharacters, useCharacterCompleteProfile } from 'src/hooks';
 
 export function App() {
   const modalRef = useRef<HTMLDialogElement>(null);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import getACompleteCharacter from 'src/services/getACompleteCharacter';
-import { CompleteCharacter } from 'src/@types/Character';
+import { getACompleteCharacter } from 'src/services';
+import { CompleteCharacter } from 'src/@types';
 
 type useCharactersReturn = [
   CompleteCharacter | null,
@@ -9,7 +9,7 @@ type useCharactersReturn = [
   boolean
 ];
 
-const useCharacterCompleteProfile = (): useCharactersReturn => {
+export const useCharacterCompleteProfile = (): useCharactersReturn => {
   const [selectedCharacter, setSelectedCharacter] =
     useState<CompleteCharacter | null>(null);
   const [error, setError] = useState<Error | null>(null);
@@ -34,5 +34,3 @@ const useCharacterCompleteProfile = (): useCharactersReturn => {
 
   return [selectedCharacter, getCharacterCompleteProfile, error, isLoading];
 };
-
-export default useCharacterCompleteProfile;

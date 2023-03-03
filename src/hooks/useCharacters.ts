@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import getCharacters from 'src/services/getCharacters';
-import { Character } from 'src/@types/Character';
+import { getCharacters } from 'src/services';
+import { Character } from 'src/@types';
 
 type useCharactersReturn = [
   Character[],
@@ -12,7 +12,7 @@ type useCharactersReturn = [
 
 const INITIAL_PAGE_TO_FETCH = 'https://rickandmortyapi.com/api/character';
 
-const useCharacters = (): useCharactersReturn => {
+export const useCharacters = (): useCharactersReturn => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
@@ -48,5 +48,3 @@ const useCharacters = (): useCharactersReturn => {
 
   return [characters, isLoading, error, fetchCharacters, nextPageToFetch];
 };
-
-export default useCharacters;

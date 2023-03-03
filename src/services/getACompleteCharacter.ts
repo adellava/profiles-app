@@ -16,7 +16,7 @@ const returnAnEmptyLocation = (): Promise<Place> => {
   });
 };
 
-const getACompleteCharacter = async (aCharacterURL: string) => {
+export const getACompleteCharacter = async (aCharacterURL: string) => {
   try {
     const aCharacter: Character = await api.get<Character>(aCharacterURL);
 
