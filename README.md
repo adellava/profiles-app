@@ -2,6 +2,9 @@
 
 ```zsh
 nvm use
+```
+
+```zsh
 npm install
 ```
 
