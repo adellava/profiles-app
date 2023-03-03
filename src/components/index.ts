@@ -4,3 +4,5 @@ export * from './Header/Header';
 export * from './Button/Button';
 export * from './Modal/Modal';
 export * from './CharacterCompleteProfile/CharacterCompleteProfile';
+export * from './GenderImage/GenderImage';
+export * from './StatusImage/StatusImage';

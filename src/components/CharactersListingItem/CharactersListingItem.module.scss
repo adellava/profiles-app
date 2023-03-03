@@ -1,6 +1,7 @@
 @use 'src/styles' as style;
 
 .CharactersListingItem {
+  cursor: pointer;
   display: grid;
   padding: 1rem;
   grid-row-gap: 1rem;
@@ -10,7 +11,12 @@
   background-color: style.$light-primary;
   border-radius: style.$border-radius;
   @include style.elevation(2);
-  cursor: pointer;
+  &:hover {
+    @include style.elevation(8);
+  }
+  &:focus-within {
+    @include style.elevation(8);
+  }
   &_action {
     display: inline;
     all: unset;
@@ -39,6 +45,9 @@
     color: style.$black;
     font-size: style.$font-size-400;
     font-weight: style.$text-featured-weight;
+  }
+  &_buttonTitle {
+    all: unset;
   }
   &_meta {
     color: style.$gray-600;

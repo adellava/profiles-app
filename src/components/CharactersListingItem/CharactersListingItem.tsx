@@ -1,4 +1,5 @@
 import { Character } from 'src/@types/Character';
+import { GenderImage, StatusImage } from 'src/components';
 import styles from './CharactersListingItem.module.scss';
 
 type CharactersListingItemProps = {
@@ -25,13 +26,17 @@ export const CharactersListingItem = ({
         <section>
           <div>
             <h3 className={styles.CharactersListingItem_title}>
-              {character.name}
+              <button className={styles.CharactersListingItem_buttonTitle}>
+                {character.name}
+              </button>
             </h3>
           </div>
           <div className={styles.CharactersListingItem_subtitle1}>
-            {character.species} - {character.status}
+            {character.species} - <StatusImage statusType={character.status} />
+            {character.status}
           </div>
           <div className={styles.CharactersListingItem_subtitle2}>
+            <GenderImage genderType={character.gender} />
             {character.gender}
           </div>
         </section>

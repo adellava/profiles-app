@@ -1,8 +1,7 @@
 import { Episode } from './Episode';
 import { Place } from './Place';
-
-type Gender = 'Female' | 'Male' | 'Genderless' | 'unknown';
-type Status = 'Alive' | 'Dead' | 'unknown';
+import { Status } from './Status';
+import { Gender } from './Gender';
 
 export type Character = {
   id: number;

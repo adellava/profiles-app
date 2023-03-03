@@ -23,7 +23,6 @@ const useCharacterCompleteProfile = (): useCharactersReturn => {
     const res = await getACompleteCharacter(url);
 
     if (res instanceof Error) {
-      console.log(res.message);
       setError(new Error('Error in fetching character'));
       setIsLoading(false);
       return;

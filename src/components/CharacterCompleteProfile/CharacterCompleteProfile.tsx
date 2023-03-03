@@ -1,6 +1,7 @@
 import { CompleteCharacter, Place } from 'src/@types';
 import { isAPlace } from 'src/utils';
 import styles from './CharacterCompleteProfile.module.scss';
+import { GenderImage, StatusImage } from 'src/components';
 
 type CharacterCompleteProfileProps = {
   completeCharacter: CompleteCharacter;
@@ -31,8 +32,6 @@ const CharacterCompleteProfilePlace = ({
 export const CharacterCompleteProfile = ({
   completeCharacter,
 }: CharacterCompleteProfileProps) => {
-  console.log(completeCharacter);
-
   return (
     <div className={styles.CharacterCompleteProfile}>
       <img
@@ -49,8 +48,15 @@ export const CharacterCompleteProfile = ({
           </h3>
           <div className={styles.CharacterCompleteProfile_subtitle}>
             <span>{completeCharacter.character.species}</span> -{' '}
-            <span>{completeCharacter.character.status}</span> -{' '}
-            <span>{completeCharacter.character.gender}</span>
+            <span>
+              <StatusImage statusType={completeCharacter.character.status} />
+              {completeCharacter.character.status}
+            </span>{' '}
+            -{' '}
+            <span>
+              <GenderImage genderType={completeCharacter.character.gender} />
+              {completeCharacter.character.gender}
+            </span>
           </div>
         </div>
         <div

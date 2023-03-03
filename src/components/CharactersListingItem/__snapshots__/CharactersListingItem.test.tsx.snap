@@ -18,7 +18,11 @@ exports[`CharactersListingItem > should render a character 1`] = `
         <h3
           className="_CharactersListingItem_title_73de65"
         >
-          Rick Sanchez
+          <button
+            className="_CharactersListingItem_buttonTitle_73de65"
+          >
+            Rick Sanchez
+          </button>
         </h3>
       </div>
       <div
@@ -26,11 +30,25 @@ exports[`CharactersListingItem > should render a character 1`] = `
       >
         Human
          - 
+        <span
+          aria-label="Alive"
+          className="_StatusImage_5db57b"
+          role="img"
+        >
+          🟢
+        </span>
         Alive
       </div>
       <div
         className="_CharactersListingItem_subtitle2_73de65"
       >
+        <span
+          aria-label="Male"
+          className="_GenderImage_d4cd8b"
+          role="img"
+        >
+          ♂
+        </span>
         Male
       </div>
     </section>
